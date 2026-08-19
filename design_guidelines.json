@@ -1,0 +1,180 @@
+{
+  "brand_identity": {
+    "name": "OTG Sneaker Cleaning",
+    "description": "Premium sneaker cleaning and restoration brand. High-end sneaker boutique meets streetwear and professional detailing studio.",
+    "core_aesthetic": "Extremely clean, modern, bold, youthful, and expensive. Monochromatic palette.",
+    "tagline": "Where Dirty Sneakers Get a Second Chance.",
+    "rules": [
+      "Must follow monochrome identity exactly.",
+      "Do NOT introduce bright colors, gradients in unrelated colors, blue, red, green, orange, purple, or generic corporate colors.",
+      "Overall visual direction: BLACK + CHARCOAL + WHITE + PREMIUM SNEAKER CULTURE.",
+      "Predominantly dark website.",
+      "Avoid: generic blue business websites, excessive rounded corners, huge text blocks, generic Bootstrap layouts."
+    ]
+  },
+  "colors": {
+    "backgrounds": {
+      "primary": ["#080808", "#0D0D0D", "#111111"],
+      "secondary": ["#171717", "#1E1E1E", "#242424"],
+      "notes": "Use primary backgrounds for main sections and secondary backgrounds for cards or distinct sections."
+    },
+    "text": {
+      "primary": ["#FFFFFF", "#F5F5F5"],
+      "secondary": ["#A0A0A0", "#777777"],
+      "notes": "Strong contrast between black backgrounds and white typography."
+    },
+    "borders_and_accents": {
+      "primary": "rgba(255,255,255,0.10)",
+      "secondary": "rgba(255,255,255,0.06)",
+      "notes": "Use thin white/transparent borders for cards, dividers, and transparent buttons."
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Anton, Bebas Neue, Oswald, or Space Grotesk Bold",
+      "body": "Inter or Manrope",
+      "notes": "Headings must be strictly used for large, condensed editorial typography."
+    },
+    "sizing": {
+      "hero_headline": "text-6xl sm:text-7xl lg:text-[10vw] leading-[0.85] tracking-tighter uppercase",
+      "section_headings": "text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tight",
+      "body": "text-base sm:text-lg text-[#A0A0A0]",
+      "labels": "text-xs tracking-[0.2em] uppercase text-[#777777]"
+    },
+    "treatment": {
+      "uppercase": "Selective uppercase on all subheadings, eyebrows, and CTA buttons.",
+      "highlight": "Specific words like 'SECOND CHANCE.' treated with charcoal or outlined text."
+    }
+  },
+  "motion_and_interactions": {
+    "libraries": [
+      "framer-motion (for scroll reveals, micro-interactions, layout transitions)",
+      "@studio-freight/react-lenis (for smooth momentum scrolling)",
+      "react-fast-marquee (for editorial marquee ribbons)"
+    ],
+    "effects": {
+      "hero": "GSAP/Framer Motion scroll reveals. Masked line-by-line hero headline reveal.",
+      "parallax": "Apply parallax scrolling to large sneaker images and floating typographic elements.",
+      "hover": "Image zoom inside clipped frames, invert colors on primary buttons, thin borders glow slightly.",
+      "marquee": "One slow, continuous editorial marquee. Do not make it too fast."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-white text-black font-bold uppercase tracking-widest px-8 py-4 hover:bg-[#111] hover:text-white transition-colors duration-300 border border-white",
+      "secondary": "bg-transparent text-white border border-white/20 font-bold uppercase tracking-widest px-8 py-4 hover:bg-white hover:text-black transition-colors duration-300"
+    },
+    "cards": {
+      "style": "bg-[#111111] border border-white/10 rounded-sm p-8",
+      "hover": "hover:border-white/30 transition-all duration-300",
+      "textures": "Subtle grain/noise texture overlay via CSS on top of dark cards for depth."
+    },
+    "navigation": {
+      "style": "Fixed sticky navbar, solid background or heavy glassmorphism with high opacity (bg-[#080808]/90 backdrop-blur-xl). Never fully transparent.",
+      "scroll_state": "Darkens on scroll, height compresses slightly.",
+      "mobile": "Hamburger menu opening to a full-screen dark overlay menu."
+    }
+  },
+  "sections_structure": [
+    {
+      "id": "hero",
+      "description": "Dramatic full-screen hero. Left: eyebrow 'OTG SNEAKER CLEANING', huge editorial headline 'YOUR SNEAKERS DESERVE A SECOND CHANCE.' with highlight, subcopy, and two CTAs. Right: large premium sneaker image on dark studio background with floating typographic details ('CLEAN. RESTORE. REPEAT.', 'SNEAKER CARE / 01')."
+    },
+    {
+      "id": "trust_intro",
+      "description": "Intro section with heading 'DIRTY SHOES. CLEAN SLATE.' Features numbered manifesto stats (01–04)."
+    },
+    {
+      "id": "services",
+      "description": "Title: 'WHAT WE DO'. Three cards: BASIC CLEAN, DEEP CLEAN (featured, slightly larger or highlighted), RESTORATION. Use 'GET A QUOTE' CTA for each."
+    },
+    {
+      "id": "before_after",
+      "description": "Title: 'THE DIFFERENCE IS DIRTY.' Interactive drag comparison slider showing a dirty and clean sneaker."
+    },
+    {
+      "id": "how_it_works",
+      "description": "Title: 'FROM DIRTY TO OTG.' 4-step timeline, horizontal on desktop, vertical on mobile."
+    },
+    {
+      "id": "materials",
+      "description": "Title: 'YOUR KICKS ARE AN INVESTMENT.' Minimalist icons/grid for Leather, Suede, Mesh, Canvas, Rubber, Synthetic."
+    },
+    {
+      "id": "gallery",
+      "description": "Title: 'OTG IN THE WILD.' Masonry grid with lightbox. Editorial feel with clipped image frames."
+    },
+    {
+      "id": "why_us",
+      "description": "4 distinct points on why choose OTG, utilizing large typography."
+    },
+    {
+      "id": "testimonials",
+      "description": "Title: 'THE KICKS SPEAK FOR THEMSELVES.' Minimalist testimonial cards."
+    },
+    {
+      "id": "instagram",
+      "description": "Title: 'FOLLOW THE CLEAN.' Grid of lifestyle Instagram shots."
+    },
+    {
+      "id": "booking_form",
+      "description": "Title: 'READY TO GIVE YOUR KICKS A SECOND CHANCE?' Full booking form with multi-image upload field and a confirmation state."
+    },
+    {
+      "id": "floating_whatsapp",
+      "description": "Floating WhatsApp icon button in bottom right."
+    },
+    {
+      "id": "faq",
+      "description": "FAQ accordion using Shadcn."
+    },
+    {
+      "id": "footer",
+      "description": "Minimal, strong dark footer with large brand typographic logo, links, and copyright."
+    }
+  ],
+  "image_urls": {
+    "hero": [
+      { "url": "https://images.pexels.com/photos/18155789/pexels-photo-18155789.jpeg", "description": "Close-up luxury designer sneakers in a studio setting." },
+      { "url": "https://images.pexels.com/photos/9986259/pexels-photo-9986259.jpeg", "description": "Sneaker in dramatic lighting." }
+    ],
+    "services": [
+      { "url": "https://images.pexels.com/photos/9507137/pexels-photo-9507137.jpeg", "description": "Sneaker cleaning kit brush and cloth." }
+    ],
+    "gallery_and_before_after": [
+      { "url": "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3", "description": "Sneakers lot." },
+      { "url": "https://images.unsplash.com/photo-1611510338559-2f463335092c", "description": "Black and white jordan 1." },
+      { "url": "https://images.pexels.com/photos/15977412/pexels-photo-15977412.jpeg", "description": "High-top sneakers." }
+    ],
+    "instagram_lifestyle": [
+      { "url": "https://images.unsplash.com/photo-1562424995-2efe650421dd", "description": "Person wearing white Nike Air shoe." },
+      { "url": "https://images.unsplash.com/photo-1556906781-9a412961c28c", "description": "Man sitting on ledge wearing Air Jordan 1." },
+      { "url": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de", "description": "White, teal, orange sneaker graffiti wall." }
+    ]
+  },
+  "testing_and_accessibility": {
+    "data_testid": "All interactive and key informational elements MUST include a data-testid attribute in kebab-case."
+  },
+  "instructions_to_main_agent": [
+    "You are using React with .js files, NOT .tsx. Provide the implementation in .js.",
+    "Implement Lenis for smooth momentum scrolling across the entire application.",
+    "Use Framer Motion to build the specific kinetic hero reveal and parallax effects.",
+    "Do NOT center align the app container (.App { text-align: center; } is FORBIDDEN).",
+    "Ensure extreme visual hierarchy. Typography should do 80% of the heavy lifting. Avoid generic blocks.",
+    "Use `lucide-react` for minimalist icons.",
+    "The forms MUST use customized shadcn components mapped to our monochrome color scheme (no default Vercel white/blue rings).",
+    "DO NOT USE INTER, ROBOTO, or LATO for the main Headings. You must use Anton, Bebas Neue, Oswald, or Space Grotesk Bold.",
+    "Inject a site configuration object/file to manage constants (social links, email, form endpoints, texts)."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) where necessary, but NO transparent header over content",
+    "You MUST NOT apply universal transition (e.g. transition: all). Add transitions to specific properties to avoid breaking Framer motion.",
+    "Always use modern button styles, specifically matching the sharp, thin-border styling outlined in the design guidelines.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc. for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures and noise overlays separate good from extraordinary.",
+    "Never use placeholder URLs (like via.placeholder.com). Use the curated image_urls provided."
+  ]
+}
