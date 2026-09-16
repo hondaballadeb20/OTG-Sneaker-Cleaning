@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, X, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { site, whatsappLink } from "../../config/siteConfig";
 import { Reveal } from "./Reveal";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const CONDITIONS = [
   "Lightly worn",
@@ -52,6 +49,27 @@ const emptyForm = {
   notes: "",
 };
 
+const buildBookingMessage = (form, photoCount) => {
+  const lines = [
+    "Hi OTG, I'd like to book a sneaker clean.",
+    `Full Name: ${form.full_name}`,
+    `WhatsApp: ${form.whatsapp}`,
+    `Email: ${form.email}`,
+    `Sneaker Brand: ${form.sneaker_brand}`,
+    `Sneaker Model: ${form.sneaker_model}`,
+    `Service: ${form.service || "Not sure yet"}`,
+    `Condition: ${form.condition || "Not specified"}`,
+    `Preferred Date: ${form.preferred_date || "Flexible"}`,
+    `Notes: ${form.notes || "No extra notes"}`,
+  ];
+
+  if (photoCount > 0) {
+    lines.push(`Photos uploaded: ${photoCount}`);
+  }
+
+  return lines.join("\n");
+};
+
 export const Booking = () => {
   const [form, setForm] = useState(emptyForm);
   const [photos, setPhotos] = useState([]);
@@ -78,12 +96,19 @@ export const Booking = () => {
   const submit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+
     try {
-      const { data } = await axios.post(`${API}/bookings`, { ...form, photos });
-      setConfirmation(data);
+      const message = buildBookingMessage(form, photos.length);
+      const url = whatsappLink(message);
+      window.open(url, "_blank", "noopener,noreferrer");
+
+      setConfirmation({
+        id: "WHATSAPP",
+        message: "Your booking details are ready in WhatsApp. Send the message and OTG will confirm the next step.",
+      });
       window.__lenis?.scrollTo("#book", { offset: -60 });
     } catch (err) {
-      toast.error("Something went wrong sending your booking. Try WhatsApp instead.");
+      toast.error("Something went wrong preparing your booking. Please message OTG directly on WhatsApp.");
     } finally {
       setSubmitting(false);
     }

@@ -227,8 +227,9 @@ export const site = {
   ],
 };
 
-export const whatsappLink = () => {
+export const whatsappLink = (customMessage) => {
   const { whatsappNumber, whatsappMessage } = site.contact;
+  const message = customMessage || whatsappMessage;
   if (!whatsappNumber) return "#book";
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 };
