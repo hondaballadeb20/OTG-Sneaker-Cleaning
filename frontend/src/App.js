@@ -7,6 +7,7 @@ import { Hero } from "@/components/otg/Hero";
 import { Marquee } from "@/components/otg/Marquee";
 import { Manifesto } from "@/components/otg/Manifesto";
 import { Services } from "@/components/otg/Services";
+import { Products } from "@/components/otg/Products";
 import { BeforeAfter } from "@/components/otg/BeforeAfter";
 import { HowItWorks } from "@/components/otg/HowItWorks";
 import { Materials } from "@/components/otg/Materials";
@@ -55,6 +56,7 @@ function App() {
         <Marquee />
         <Manifesto />
         <Services />
+        <Products />
         <BeforeAfter />
         <HowItWorks />
         <Materials />

@@ -27,6 +27,7 @@ export const site = {
   nav: [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
+    { label: "Kits", href: "#kits" },
     { label: "How It Works", href: "#how-it-works" },
     { label: "Gallery", href: "#gallery" },
     { label: "About", href: "#about" },
@@ -82,6 +83,45 @@ export const site = {
     },
   ],
 
+  // ── OTG PRODUCTS / KITS (WhatsApp ordering) ──
+  products: [
+    {
+      id: "travel-kit",
+      name: "OTG Travel Kit",
+      price: "R250",
+      tagline: "The essentials, packed for the move.",
+      image: "/images/kit-b.webp",
+      contents: [
+        "Sneaker Shampoo",
+        "Microfiber Cloth",
+        "Soft Bristle Brush",
+        "Travel Case",
+      ],
+      featured: false,
+    },
+    {
+      id: "cleaning-kit",
+      name: "OTG Cleaning Kit",
+      price: "R350",
+      tagline: "The full home-care setup.",
+      image: "/images/kit-a.webp",
+      contents: [
+        "Sneaker Shampoo",
+        "Sneaker Whitener",
+        "Microfiber Cloth",
+        "Soft Bristle Brush",
+        "Hard Bristle Brush",
+        "Travel Case",
+      ],
+      featured: true,
+    },
+  ],
+  productShots: [
+    { src: "/images/kit-d.webp", alt: "OTG Sneaker Shampoo bottle" },
+    { src: "/images/kit-e.webp", alt: "OTG Sneaker Whitener bottle" },
+    { src: "/images/kit-c.webp", alt: "OTG soft bristle sneaker brush" },
+  ],
+
   // ── BEFORE / AFTER (placeholder imagery — swap in real OTG results) ──
   // NOTE: the same photo is shown treated (dirty) vs untreated (clean) as a
   // placeholder. Replace `image` with real before/after pairs when available.
@@ -116,7 +156,7 @@ export const site = {
     { src: "/images/real-2.jpg", alt: "Green and white Air Jordan 1 Low restored by OTG", tag: "OTG WORK", real: true },
     { src: "/images/real-1.jpg", alt: "Burgundy leopard Nike Air Max 90 cleaned by OTG", tag: "OTG WORK", real: true },
     { src: "/images/real-4.webp", alt: "Pink Adidas Spezial after a professional OTG clean", tag: "OTG WORK", real: true },
-    { src: "/images/kit.jpg", alt: "Sneaker cleaning brushes and kit", tag: "THE KIT" },
+    { src: "/images/kit-c.webp", alt: "OTG soft bristle sneaker brush", tag: "THE KIT", real: true },
     { src: "/images/g2.jpg", alt: "Black and white high-top sneaker studio shot", tag: "STUDIO" },
     { src: "/images/g10.jpg", alt: "Black sneaker close-up on dark background", tag: "DETAIL" },
     { src: "/images/g9.jpg", alt: "Clean white sneaker macro detail", tag: "DETAIL" },
