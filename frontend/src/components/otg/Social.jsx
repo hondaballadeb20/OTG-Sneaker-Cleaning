@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { Instagram, Music2 } from "lucide-react";
 import { site } from "../../config/siteConfig";
 import { Reveal } from "./Reveal";
 
@@ -22,15 +22,26 @@ export const Social = () => (
           </p>
         </Reveal>
         <Reveal delay={0.24}>
-          <a
-            href={site.contact.instagramUrl || "#social"}
-            target={site.contact.instagramUrl ? "_blank" : undefined}
-            rel="noopener noreferrer"
-            data-testid="social-follow-button"
-            className="mt-10 inline-flex items-center gap-3 bg-white text-black text-xs font-bold tracking-[0.2em] uppercase px-9 py-4 border border-white hover:bg-transparent hover:text-white transition-colors duration-300"
-          >
-            <Instagram size={16} /> Follow OTG
-          </a>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href={site.contact.instagramUrl || "#social"}
+              target={site.contact.instagramUrl ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              data-testid="social-follow-button"
+              className="inline-flex items-center gap-3 bg-white text-black text-xs font-bold tracking-[0.2em] uppercase px-9 py-4 border border-white hover:bg-transparent hover:text-white transition-colors duration-300"
+            >
+              <Instagram size={16} /> Follow OTG
+            </a>
+            <a
+              href={site.contact.tiktokUrl || "#social"}
+              target={site.contact.tiktokUrl ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              data-testid="social-tiktok-button"
+              className="inline-flex items-center gap-3 bg-transparent text-white text-xs font-bold tracking-[0.2em] uppercase px-9 py-4 border border-white/25 hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              <Music2 size={16} /> OTG on TikTok
+            </a>
+          </div>
         </Reveal>
       </div>
 

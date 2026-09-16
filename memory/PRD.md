@@ -18,6 +18,7 @@ Build a premium, modern, youth-focused website for OTG Sneaker Cleaning (sneaker
 ## Implemented (2026-07-19 build, verified 2026-08-19)
 - 2026-09-16: Replaced gallery placeholders with 5 real OTG result photos (Campus 00s, Jordan 3, Jordan 1 Low, Air Max 90, Spezial) — grayscale by default, colour reveals on hover, full colour in lightbox
 - 2026-09-16: Added "TAKE THE CLEAN HOME." products section (#kits) — OTG Travel Kit R250 + OTG Cleaning Kit R350 (featured) with real product photography (flat-lays rotated upright, bottle/brush shots), WhatsApp ordering per product (pre-filled message, falls back to #book until whatsappNumber set), "Inside the Kits" strip, KITS nav link
+- 2026-09-16: Wired real contact details — WhatsApp 27609958632 (float button, kit ordering, footer), Instagram @otg.sneaker_cleaning, TikTok @otg.sneakercleaning (footer icon + FOLLOW THE CLEAN second button). All links verified live.
 - Full single-page site, all 20 brief sections, award-direction motion (masked hero reveal, parallax, marquee, scroll reveals, Lenis)
 - Booking form end-to-end (validated, photo upload up to 5 with client-side downscale, Mongo storage, confirmation state with reference ID) — tested via UI submit + curl
 - Before/after drag slider (3 examples, placeholder-treated imagery, clearly marked)

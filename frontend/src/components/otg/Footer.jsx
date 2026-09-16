@@ -1,4 +1,4 @@
-import { Instagram, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Instagram, MessageCircle, Mail, MapPin, Music2 } from "lucide-react";
 import { site, whatsappLink } from "../../config/siteConfig";
 
 export const Footer = () => {
@@ -24,6 +24,9 @@ export const Footer = () => {
               </a>
               <a href={whatsappLink()} data-testid="footer-whatsapp" aria-label="WhatsApp" className="w-11 h-11 border border-white/15 flex items-center justify-center text-smoke hover:text-black hover:bg-white transition-colors duration-300">
                 <MessageCircle size={17} />
+              </a>
+              <a href={c.tiktokUrl || "#social"} target={c.tiktokUrl ? "_blank" : undefined} rel="noopener noreferrer" data-testid="footer-tiktok" aria-label="TikTok" className="w-11 h-11 border border-white/15 flex items-center justify-center text-smoke hover:text-black hover:bg-white transition-colors duration-300">
+                <Music2 size={17} />
               </a>
               <a href={c.email ? `mailto:${c.email}` : "#book"} data-testid="footer-email" aria-label="Email" className="w-11 h-11 border border-white/15 flex items-center justify-center text-smoke hover:text-black hover:bg-white transition-colors duration-300">
                 <Mail size={17} />

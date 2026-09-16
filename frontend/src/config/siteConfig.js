@@ -14,11 +14,13 @@ export const site = {
 
   // ── CONTACT / BUSINESS DETAILS (edit these when available) ──
   contact: {
-    whatsappNumber: "", // TODO: international format, no "+" — e.g. "27821234567"
+    whatsappNumber: "27609958632",
     whatsappMessage:
       "Hi OTG, I'd like to enquire about getting my sneakers cleaned.",
-    instagramUrl: "", // TODO: e.g. "https://instagram.com/otgsneakercleaning"
-    instagramHandle: "@otg", // display label only until URL is set
+    instagramUrl: "https://www.instagram.com/otg.sneaker_cleaning",
+    instagramHandle: "@otg.sneaker_cleaning",
+    tiktokUrl: "https://www.tiktok.com/@otg.sneakercleaning",
+    tiktokHandle: "@otg.sneakercleaning",
     email: "", // TODO: e.g. "hello@otgcleaning.com"
     location: "", // TODO: e.g. "Cape Town, South Africa"
     hours: "", // TODO: e.g. "Mon–Sat, 09:00–18:00"
