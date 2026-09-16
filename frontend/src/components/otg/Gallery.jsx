@@ -14,7 +14,7 @@ export const Gallery = () => {
           testid="gallery-head"
           eyebrow="Gallery"
           title="OTG in the Wild."
-          sub="Clean pairs, fresh details and the work behind them. Placeholder photography — real OTG shots slot straight in."
+          sub="Real pairs, real second chances — straight off the OTG bench. Hover a photo to see the colour come back."
         />
 
         <div className="columns-2 md:columns-3 gap-4 [column-fill:balance]">
@@ -29,7 +29,9 @@ export const Gallery = () => {
                   src={g.src}
                   alt={g.alt}
                   loading="lazy"
-                  className="w-full object-cover img-mono group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className={`w-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-105 ${
+                    g.real ? "img-mono group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100" : "img-mono"
+                  }`}
                 />
                 <span className="absolute inset-0 bg-ink-950/0 group-hover:bg-ink-950/35 transition-colors duration-500" />
                 <span className="absolute bottom-3 left-3 text-[9px] tracking-[0.3em] uppercase text-white/70 bg-ink-950/70 px-2.5 py-1 border border-white/10">
@@ -65,7 +67,7 @@ export const Gallery = () => {
               className="max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={selected.src} alt={selected.alt} className="w-full max-h-[78vh] object-contain img-mono border border-white/10" />
+              <img src={selected.src} alt={selected.alt} className={`w-full max-h-[78vh] object-contain border border-white/10 ${selected.real ? "" : "img-mono"}`} />
               <figcaption className="mt-4 text-xs tracking-[0.25em] uppercase text-smoke">{selected.alt}</figcaption>
             </motion.figure>
           </motion.div>

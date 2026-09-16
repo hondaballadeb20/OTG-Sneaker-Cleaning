@@ -109,17 +109,17 @@ export const site = {
     },
   ],
 
-  // ── GALLERY (placeholder photography — replace with OTG shoots) ──
+  // ── GALLERY (real OTG work first; placeholders after — swap freely) ──
   gallery: [
-    { src: "/images/g2.jpg", alt: "Black and white high-top sneaker studio shot", tag: "STUDIO" },
-    { src: "/images/g6.jpg", alt: "Fresh white sneakers after a deep clean", tag: "FRESH PAIRS" },
+    { src: "/images/real-5.webp", alt: "Freshly cleaned blue Adidas Campus 00s by OTG", tag: "OTG WORK", real: true },
+    { src: "/images/real-3.webp", alt: "Grey Air Jordan 3 poolside after an OTG deep clean", tag: "OTG WORK", real: true },
+    { src: "/images/real-2.jpg", alt: "Green and white Air Jordan 1 Low restored by OTG", tag: "OTG WORK", real: true },
+    { src: "/images/real-1.jpg", alt: "Burgundy leopard Nike Air Max 90 cleaned by OTG", tag: "OTG WORK", real: true },
+    { src: "/images/real-4.webp", alt: "Pink Adidas Spezial after a professional OTG clean", tag: "OTG WORK", real: true },
     { src: "/images/kit.jpg", alt: "Sneaker cleaning brushes and kit", tag: "THE KIT" },
-    { src: "/images/g4.jpg", alt: "High-top sneaker detail, street setting", tag: "IN THE WILD" },
+    { src: "/images/g2.jpg", alt: "Black and white high-top sneaker studio shot", tag: "STUDIO" },
     { src: "/images/g10.jpg", alt: "Black sneaker close-up on dark background", tag: "DETAIL" },
     { src: "/images/g9.jpg", alt: "Clean white sneaker macro detail", tag: "DETAIL" },
-    { src: "/images/g11.jpg", alt: "Sneaker on dark studio backdrop", tag: "STUDIO" },
-    { src: "/images/g7.jpg", alt: "Classic checkered slip-on sneakers", tag: "FRESH PAIRS" },
-    { src: "/images/g12.jpg", alt: "Sneaker collection line-up", tag: "THE ROTATION" },
   ],
 
   // ── TESTIMONIALS (PLACEHOLDER — replace with real customer reviews) ──
