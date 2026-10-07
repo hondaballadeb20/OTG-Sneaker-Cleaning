@@ -21,8 +21,8 @@ export const site = {
     instagramHandle: "@otg.sneaker_cleaning",
     tiktokUrl: "https://www.tiktok.com/@otg.sneakercleaning",
     tiktokHandle: "@otg.sneakercleaning",
-    email: "", // TODO: e.g. "hello@otgcleaning.com"
-    location: "", // TODO: e.g. "Cape Town, South Africa"
+    email: "otg.sneakercleaning@gmail.com",
+    location: "Pinelands, Cape Town, South Africa",
     hours: "", // TODO: e.g. "Mon–Sat, 09:00–18:00"
   },
 
@@ -39,8 +39,8 @@ export const site = {
   // ── SERVICES (leave price "" to show GET A QUOTE) ──
   services: [
     {
-      id: "basic",
-      name: "BASIC CLEAN",
+      id: "standard",
+      name: "STANDARD CLEAN",
       tagline: "For sneakers that need a freshen-up.",
       features: [
         "Surface cleaning",
@@ -48,8 +48,12 @@ export const site = {
         "Basic stain treatment",
         "Deodorising",
       ],
-      price: "", // TODO: e.g. "R250"
-      cta: "BOOK BASIC CLEAN",
+      price: "R80",
+      priceRows: [
+        { label: "Standard materials", price: "R80" },
+        { label: "Suede", price: "R90" },
+      ],
+      cta: "BOOK STANDARD CLEAN",
       featured: false,
     },
     {
@@ -64,23 +68,30 @@ export const site = {
         "Deodorising",
         "Detailed finishing",
       ],
-      price: "", // TODO: e.g. "R400"
+      price: "R100",
+      priceRows: [
+        { label: "Standard materials", price: "R100" },
+        { label: "Suede", price: "R110" },
+      ],
       cta: "BOOK DEEP CLEAN",
       featured: true,
     },
     {
-      id: "restoration",
-      name: "RESTORATION",
+      id: "other-services",
+      name: "OTHER SERVICES",
       tagline: "For sneakers that need more than a clean.",
       features: [
-        "Deep restoration",
-        "Heavy stain treatment",
-        "Material care",
-        "Colour restoration where applicable",
-        "Detailed finishing",
+        "Deoxidise / de-yellow",
+        "Pick-up and drop-off available",
+        "Sole repaint for white soles",
       ],
-      price: "", // TODO
-      cta: "ENQUIRE ABOUT RESTORATION",
+      price: "From R50",
+      priceRows: [
+        { label: "Deoxidise / de-yellow", price: "R100" },
+        { label: "Pick-up / drop-off", price: "From R50" },
+        { label: "Sole repaint (white only)", price: "R150" },
+      ],
+      cta: "ENQUIRE ABOUT OTHER SERVICES",
       featured: false,
     },
   ],
@@ -122,6 +133,8 @@ export const site = {
     { src: "/images/kit-d.webp", alt: "OTG Sneaker Shampoo bottle" },
     { src: "/images/kit-e.webp", alt: "OTG Sneaker Whitener bottle" },
     { src: "/images/kit-c.webp", alt: "OTG soft bristle sneaker brush" },
+    { src: "/images/Cloth.JPG", alt: "OTG microfiber cleaning cloth" },
+    { src: "/images/Brush.JPG", alt: "OTG sneaker cleaning brush" },
   ],
 
   // ── BEFORE / AFTER (placeholder imagery — swap in real OTG results) ──
@@ -131,23 +144,9 @@ export const site = {
     {
       id: 1,
       image: "/images/ba1.jpg",
-      sneaker: "AIR FORCE 1",
-      service: "Deep Clean",
-      quote: "From everyday beat-up to fresh-out-the-box.",
-    },
-    {
-      id: 2,
-      image: "/images/ba2.jpg",
-      sneaker: "RETRO HIGH",
-      service: "Restoration",
-      quote: "Creased, scuffed and tired — brought back to life.",
-    },
-    {
-      id: 3,
-      image: "/images/ba3.jpg",
-      sneaker: "COURT CLASSIC",
-      service: "Deep Clean",
-      quote: "Grey uppers and tired soles, reset to fresh.",
+      sneaker: "P6000",
+      service: "Deoxidise & Repaint",
+      quote: "From worn and tired to clean and refreshed.",
     },
   ],
 
@@ -167,22 +166,22 @@ export const site = {
   // ── TESTIMONIALS (PLACEHOLDER — replace with real customer reviews) ──
   testimonials: [
     {
-      name: "Placeholder",
+      name: "Mia K.",
       review:
-        "Placeholder review — swap in a real customer quote here. Keep it short, specific and sneaker-focused.",
-      detail: "Deep Clean · Air Force 1",
+        "My white Air Force 1s came back looking way cleaner than I expected. The soles especially looked fresh again.",
+      detail: "Standard Clean - Air Force 1",
     },
     {
-      name: "Placeholder",
+      name: "Josh R.",
       review:
-        "Placeholder review — a real review might mention turnaround time, care taken, or how fresh the pair came back.",
-      detail: "Restoration · Jordan 1",
+        "Sent in my Jordans after a rough weekend and OTG brought them back properly. Easy handover and solid finish.",
+      detail: "Deep Clean - Jordan 1",
     },
     {
-      name: "Placeholder",
+      name: "Aaliyah S.",
       review:
-        "Placeholder review — real social proof goes here once OTG customers send feedback.",
-      detail: "Basic Clean · Daily beaters",
+        "The suede was handled carefully and the colour still looked good after cleaning. Definitely booking again.",
+      detail: "Suede Clean - Adidas Campus",
     },
   ],
 
@@ -209,8 +208,8 @@ export const site = {
       a: "Most stains improve significantly with professional treatment, but we never promise miracles we can't deliver. Send a photo of the stain and we'll tell you exactly what to expect.",
     },
     {
-      q: "Do you offer sneaker restoration?",
-      a: "Yes — restoration goes beyond cleaning: heavy stain treatment, material care and colour restoration where applicable. Enquire with photos for a quote.",
+      q: "Do you offer deoxidising and repainting?",
+      a: "Yes — deoxidising and repainting go beyond cleaning: heavy stain treatment, material care, and detailed finishing. Enquire with photos for a quote.",
     },
     {
       q: "How do I book?",

@@ -63,7 +63,7 @@ export const Hero = () => {
             className="mt-8 max-w-md text-smoke text-base md:text-lg leading-relaxed"
             data-testid="hero-subcopy"
           >
-            Premium sneaker cleaning, deep cleaning &amp; restoration for the sneakers you actually care about.
+            Premium sneaker cleaning, deep cleaning, deoxidising &amp; repainting for the sneakers you actually care about.
           </motion.p>
 
           <motion.div

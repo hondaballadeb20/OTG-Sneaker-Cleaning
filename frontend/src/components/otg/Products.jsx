@@ -83,7 +83,7 @@ export const Products = () => (
         <Reveal>
           <p className="eyebrow mb-6">Inside the Kits</p>
         </Reveal>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {site.productShots.map((s, i) => (
             <Reveal key={s.src} delay={i * 0.08}>
               <div className="overflow-hidden border border-white/10 group" data-testid={`product-shot-${i}`}>

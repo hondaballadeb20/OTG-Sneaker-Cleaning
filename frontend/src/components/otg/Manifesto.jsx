@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 const STATS = [
   { n: "01", label: "Deep Cleaning" },
   { n: "02", label: "Sneaker Care" },
-  { n: "03", label: "Restoration" },
+  { n: "03", label: "Deoxidise & Repaint" },
   { n: "04", label: "Second Chances" },
 ];
 

@@ -2,8 +2,8 @@ import { Check } from "lucide-react";
 import { site } from "../../config/siteConfig";
 import { Reveal, SectionHead } from "./Reveal";
 
-const selectService = (id) => {
-  window.dispatchEvent(new CustomEvent("otg:select-service", { detail: id }));
+const selectService = (serviceName) => {
+  window.dispatchEvent(new CustomEvent("otg:select-service", { detail: serviceName }));
 };
 
 export const Services = () => (
@@ -48,12 +48,23 @@ export const Services = () => (
               </ul>
 
               <div className={`mt-10 pt-6 border-t ${s.featured ? "border-black/15" : "border-white/10"}`}>
-                <p className={`font-display text-2xl mb-5 ${s.featured ? "text-black" : "text-white"}`} data-testid={`service-price-${s.id}`}>
-                  {s.price || "Get a Quote"}
-                </p>
+                {s.priceRows?.length ? (
+                  <div className="mb-5 space-y-2" data-testid={`service-price-${s.id}`}>
+                    {s.priceRows.map((row) => (
+                      <div key={row.label} className={`flex items-baseline justify-between gap-4 text-sm ${s.featured ? "text-black/70" : "text-smoke"}`}>
+                        <span>{row.label}</span>
+                        <span className={`font-display text-2xl whitespace-nowrap ${s.featured ? "text-black" : "text-white"}`}>{row.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className={`font-display text-2xl mb-5 ${s.featured ? "text-black" : "text-white"}`} data-testid={`service-price-${s.id}`}>
+                    {s.price || "Get a Quote"}
+                  </p>
+                )}
                 <a
                   href="#book"
-                  onClick={() => selectService(s.id)}
+                  onClick={() => selectService(s.name)}
                   data-testid={`service-cta-${s.id}`}
                   className={`block text-center text-xs font-bold tracking-[0.2em] uppercase px-6 py-4 border transition-colors duration-300 ${
                     s.featured

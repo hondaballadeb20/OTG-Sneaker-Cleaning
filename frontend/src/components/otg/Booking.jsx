@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Upload, X, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
+import { Plus, X, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { site, whatsappLink } from "../../config/siteConfig";
 import { Reveal } from "./Reveal";
@@ -11,86 +11,77 @@ const CONDITIONS = [
   "Heavily worn",
   "Stained",
   "Yellowing",
-  "Needs restoration",
+  "Needs deoxidising",
 ];
 
 const inputCls =
   "w-full bg-ink-800 border border-white/10 px-4 py-3.5 text-sm text-white placeholder:text-smoke-dark focus:border-white/50 focus:outline-none transition-colors duration-300";
 
-const downscale = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const scale = Math.min(1, 1200 / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.round(img.width * scale);
-        canvas.height = Math.round(img.height * scale);
-        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL("image/jpeg", 0.8));
-      };
-      img.onerror = reject;
-      img.src = e.target.result;
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
-const emptyForm = {
-  full_name: "",
-  whatsapp: "",
-  email: "",
+const emptyPair = {
   sneaker_brand: "",
   sneaker_model: "",
   service: "",
   condition: "",
-  preferred_date: "",
   notes: "",
 };
 
-const buildBookingMessage = (form, photoCount) => {
+const buildBookingMessage = (form, pairs) => {
   const lines = [
-    "Hi OTG, I'd like to book a sneaker clean.",
+    "Hi OTG, I'd like to book multiple sneaker cleanings.",
     `Full Name: ${form.full_name}`,
     `WhatsApp: ${form.whatsapp}`,
     `Email: ${form.email}`,
-    `Sneaker Brand: ${form.sneaker_brand}`,
-    `Sneaker Model: ${form.sneaker_model}`,
-    `Service: ${form.service || "Not sure yet"}`,
-    `Condition: ${form.condition || "Not specified"}`,
     `Preferred Date: ${form.preferred_date || "Flexible"}`,
-    `Notes: ${form.notes || "No extra notes"}`,
+    "",
+    "Pairs:",
   ];
 
-  if (photoCount > 0) {
-    lines.push(`Photos uploaded: ${photoCount}`);
-  }
+  pairs.forEach((pair, index) => {
+    lines.push(`Pair ${index + 1}:`);
+    lines.push(`- Brand: ${pair.sneaker_brand || "Not specified"}`);
+    lines.push(`- Model: ${pair.sneaker_model || "Not specified"}`);
+    lines.push(`- Service: ${pair.service || "Not sure yet"}`);
+    lines.push(`- Condition: ${pair.condition || "Not specified"}`);
+    lines.push(`- Notes: ${pair.notes || "No extra notes"}`);
+    lines.push("");
+  });
 
   return lines.join("\n");
 };
 
 export const Booking = () => {
-  const [form, setForm] = useState(emptyForm);
-  const [photos, setPhotos] = useState([]);
+  const [form, setForm] = useState({
+    full_name: "",
+    whatsapp: "",
+    email: "",
+    preferred_date: "",
+  });
+  const [pairs, setPairs] = useState([emptyPair]);
   const [submitting, setSubmitting] = useState(false);
   const [confirmation, setConfirmation] = useState(null);
 
   useEffect(() => {
-    const onSelect = (e) => setForm((f) => ({ ...f, service: e.detail }));
+    const onSelect = (e) => setPairs((current) => {
+      const next = [...current];
+      next[0] = { ...next[0], service: e.detail };
+      return next;
+    });
     window.addEventListener("otg:select-service", onSelect);
     return () => window.removeEventListener("otg:select-service", onSelect);
   }, []);
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const addPhotos = async (files) => {
-    const room = 5 - photos.length;
-    const picked = Array.from(files).slice(0, room);
-    const processed = await Promise.all(
-      picked.map(async (f) => ({ filename: f.name, data: await downscale(f) }))
-    );
-    setPhotos((p) => [...p, ...processed]);
+  const updatePair = (index, key) => (e) => {
+    setPairs((current) => current.map((pair, pairIndex) =>
+      pairIndex === index ? { ...pair, [key]: e.target.value } : pair
+    ));
+  };
+
+  const addPair = () => setPairs((current) => [...current, { ...emptyPair }]);
+
+  const removePair = (index) => {
+    setPairs((current) => current.length > 1 ? current.filter((_, pairIndex) => pairIndex !== index) : current);
   };
 
   const submit = async (e) => {
@@ -98,7 +89,13 @@ export const Booking = () => {
     setSubmitting(true);
 
     try {
-      const message = buildBookingMessage(form, photos.length);
+      const invalidPair = pairs.find((pair) => !pair.sneaker_brand || !pair.sneaker_model || !pair.service || !pair.condition);
+      if (invalidPair) {
+        toast.error("Complete every pair's brand, model, service, and condition before sending.");
+        return;
+      }
+
+      const message = buildBookingMessage(form, pairs);
       const url = whatsappLink(message);
       window.open(url, "_blank", "noopener,noreferrer");
 
@@ -150,7 +147,7 @@ export const Booking = () => {
                   <MessageCircle size={15} /> Chat with OTG
                 </a>
                 <button
-                  onClick={() => { setConfirmation(null); setForm(emptyForm); setPhotos([]); }}
+                  onClick={() => { setConfirmation(null); setForm({ full_name: "", whatsapp: "", email: "", preferred_date: "" }); setPairs([emptyPair]); }}
                   data-testid="book-another-button"
                   className="text-xs font-bold tracking-[0.2em] uppercase px-8 py-4 border border-black/30 hover:border-black transition-colors duration-300"
                 >
@@ -170,55 +167,59 @@ export const Booking = () => {
               <input required data-testid="booking-name-input" placeholder="Full Name *" value={form.full_name} onChange={set("full_name")} className={inputCls} />
               <input required data-testid="booking-whatsapp-input" placeholder="WhatsApp Number *" value={form.whatsapp} onChange={set("whatsapp")} className={inputCls} />
               <input required type="email" data-testid="booking-email-input" placeholder="Email *" value={form.email} onChange={set("email")} className={inputCls} />
-              <input required data-testid="booking-brand-input" placeholder="Sneaker Brand * (e.g. Nike)" value={form.sneaker_brand} onChange={set("sneaker_brand")} className={inputCls} />
-              <input required data-testid="booking-model-input" placeholder="Sneaker Model * (e.g. Air Force 1)" value={form.sneaker_model} onChange={set("sneaker_model")} className={inputCls} />
-              <select required data-testid="booking-service-select" value={form.service} onChange={set("service")} className={`${inputCls} ${!form.service && "text-smoke-dark"}`}>
-                <option value="" disabled>Service Required *</option>
-                {site.services.map((s) => (
-                  <option key={s.id} value={s.id}>{s.name}</option>
-                ))}
-                <option value="unsure">Not sure — advise me</option>
-              </select>
-              <select required data-testid="booking-condition-select" value={form.condition} onChange={set("condition")} className={`${inputCls} ${!form.condition && "text-smoke-dark"}`}>
-                <option value="" disabled>Sneaker Condition *</option>
-                {CONDITIONS.map((c) => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
-              <div>
+
+              <div className="md:col-span-2">
                 <label className="block text-[10px] tracking-[0.25em] uppercase text-black/50 mb-2">Preferred Drop-Off / Collection Date</label>
                 <input type="date" data-testid="booking-date-input" value={form.preferred_date} onChange={set("preferred_date")} className={inputCls} />
               </div>
-              <textarea data-testid="booking-notes-input" placeholder="Additional Notes" value={form.notes} onChange={set("notes")} rows={4} className={`${inputCls} md:col-span-2 resize-none`} />
 
-              <div className="md:col-span-2">
-                <label
-                  data-testid="booking-upload-zone"
-                  className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-black/25 hover:border-black/60 px-6 py-10 cursor-pointer transition-colors duration-300"
-                >
-                  <Upload size={22} />
-                  <span className="text-xs tracking-[0.25em] uppercase font-bold">Upload Sneaker Photos (up to 5)</span>
-                  <span className="text-xs text-black/50">Clear shots of the uppers, soles and any stains help us quote accurately.</span>
-                  <input type="file" accept="image/*" multiple className="hidden" data-testid="booking-file-input" onChange={(e) => addPhotos(e.target.files)} />
-                </label>
-                {photos.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-3" data-testid="booking-photo-previews">
-                    {photos.map((p, i) => (
-                      <div key={i} className="relative w-20 h-20 border border-black/20">
-                        <img src={p.data} alt={`Sneaker upload ${i + 1}`} className="w-full h-full object-cover" />
-                        <button
-                          type="button"
-                          data-testid={`remove-photo-${i}`}
-                          onClick={() => setPhotos((ps) => ps.filter((_, x) => x !== i))}
-                          className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white flex items-center justify-center"
-                          aria-label="Remove photo"
-                        >
-                          <X size={12} />
-                        </button>
-                      </div>
-                    ))}
+              {pairs.map((pair, index) => (
+                <div key={index} className="md:col-span-2 border border-black/15 p-5 md:p-6 space-y-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-xs tracking-[0.25em] uppercase font-bold">Pair {index + 1}</p>
+                    {pairs.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => removePair(index)}
+                        data-testid={`remove-pair-${index}`}
+                        className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase hover:text-black/60"
+                      >
+                        <X size={14} /> Remove
+                      </button>
+                    )}
                   </div>
-                )}
+
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <input required data-testid={`booking-brand-input-${index}`} placeholder="Sneaker Brand * (e.g. Nike)" value={pair.sneaker_brand} onChange={updatePair(index, "sneaker_brand")} className={inputCls} />
+                    <input required data-testid={`booking-model-input-${index}`} placeholder="Sneaker Model * (e.g. Air Force 1)" value={pair.sneaker_model} onChange={updatePair(index, "sneaker_model")} className={inputCls} />
+                    <select required data-testid={`booking-service-select-${index}`} value={pair.service} onChange={updatePair(index, "service")} className={`${inputCls} ${!pair.service && "text-smoke-dark"}`}>
+                      <option value="" disabled>Service Required *</option>
+                      {site.services.map((s) => (
+                        <option key={s.id} value={s.name}>{s.name}</option>
+                      ))}
+                      <option value="Not sure — advise me">Not sure — advise me</option>
+                    </select>
+                    <select required data-testid={`booking-condition-select-${index}`} value={pair.condition} onChange={updatePair(index, "condition")} className={`${inputCls} ${!pair.condition && "text-smoke-dark"}`}>
+                      <option value="" disabled>Sneaker Condition *</option>
+                      {CONDITIONS.map((c) => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <textarea data-testid={`booking-notes-input-${index}`} placeholder="Pair Notes" value={pair.notes} onChange={updatePair(index, "notes")} rows={3} className={`${inputCls} resize-none`} />
+                </div>
+              ))}
+
+              <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-4">
+                <button
+                  type="button"
+                  onClick={addPair}
+                  data-testid="add-pair-button"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase px-6 py-4 border border-black/30 hover:border-black transition-colors duration-300"
+                >
+                  <Plus size={15} /> Add Another Pair
+                </button>
               </div>
 
               <div className="md:col-span-2 mt-4">

@@ -69,9 +69,20 @@ export const Footer = () => {
           <p className="font-display uppercase text-2xl md:text-4xl text-outline-faint select-none">
             Second Chances Only.
           </p>
-          <p className="text-xs text-smoke-dark" data-testid="footer-copyright">
-            © 2026 OTG Sneaker Cleaning. All rights reserved.
-          </p>
+          <div className="flex flex-col md:items-end gap-1 text-xs text-smoke-dark">
+            <p data-testid="footer-copyright">
+              © 2026 OTG Sneaker Cleaning. All rights reserved.
+            </p>
+            <a
+              href="https://nexlysa.co.za"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors duration-300"
+              data-testid="footer-powered-by"
+            >
+              Powered by Nexly Software Solutions
+            </a>
+          </div>
         </div>
       </div>
     </footer>
