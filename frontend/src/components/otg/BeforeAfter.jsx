@@ -34,7 +34,7 @@ const CompareSlider = ({ beforeImage, afterImage, alt }) => {
       onPointerDown={onDown}
       className="ba-handle relative aspect-[4/3] md:aspect-[16/10] overflow-hidden border border-white/10 select-none"
     >
-      <img src={afterImage} alt={`${alt} — after professional cleaning`} className="absolute inset-0 w-full h-full object-cover img-mono" draggable={false} />
+      <img src={afterImage} alt={`${alt} — after professional cleaning`} className="absolute inset-0 w-full h-full object-cover" draggable={false} />
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         <img src={beforeImage} alt={`${alt} — before cleaning`} className="absolute inset-0 w-full h-full object-cover" draggable={false} />
       </div>

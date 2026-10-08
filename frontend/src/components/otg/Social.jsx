@@ -2,7 +2,7 @@ import { Instagram, Music2 } from "lucide-react";
 import { site } from "../../config/siteConfig";
 import { Reveal } from "./Reveal";
 
-const SHOTS = ["/images/g3.jpg", "/images/g5.jpg", "/images/g1.jpg", "/images/g8.jpg"];
+const SHOTS = ["/images/real-1.jpg", "/images/real-2.jpg", "/images/real-3.webp", "/images/real-4.webp"];
 
 export const Social = () => (
   <section id="social" data-testid="social-section" className="relative bg-ink-950 py-28 md:py-40 border-t border-white/5 overflow-hidden">

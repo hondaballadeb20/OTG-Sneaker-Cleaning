@@ -158,9 +158,6 @@ export const site = {
     { src: "/images/real-1.jpg", alt: "Burgundy leopard Nike Air Max 90 cleaned by OTG", tag: "OTG WORK", real: true },
     { src: "/images/real-4.webp", alt: "Pink Adidas Spezial after a professional OTG clean", tag: "OTG WORK", real: true },
     { src: "/images/kit-c.webp", alt: "OTG soft bristle sneaker brush", tag: "THE KIT", real: true },
-    { src: "/images/g2.jpg", alt: "Black and white high-top sneaker studio shot", tag: "STUDIO" },
-    { src: "/images/g10.jpg", alt: "Black sneaker close-up on dark background", tag: "DETAIL" },
-    { src: "/images/g9.jpg", alt: "Clean white sneaker macro detail", tag: "DETAIL" },
   ],
 
   // ── TESTIMONIALS (PLACEHOLDER — replace with real customer reviews) ──
